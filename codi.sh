@@ -8,5 +8,7 @@ awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 
 #execici 2#
 ~/practiques$ awk -F ',' '$14 != "True"' sortida.csv > sortida2.csv
-~/practiques$ wc (sortida.csv - sortida2.csv) = registres_elimnats
-~/practiques$ echo registres_eliminats
+entrada = (wc -l < sortida.csv)
+sortida = (wc -l < sortida2.csv)
+~/practiques$ wc (entrada - sortida)
+
