@@ -7,6 +7,6 @@ awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 ~/practiques$ cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv
 
 #execici 2#
-~/practiques$ awk -F ',' '$15 != "True" { print $0 }' sortida.csv > sortida2.csv
+~/practiques$ awk -F ',' '$14 != "True"' sortida.csv > sortida2.csv
 ~/practiques$ wc (sortida.csv - sortida2.csv) = registres_elimnats
 ~/practiques$ echo registres_eliminats
