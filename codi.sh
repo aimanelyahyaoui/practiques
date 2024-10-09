@@ -19,13 +19,21 @@ awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 print $0 "," ranking;}' sortida2.csv > sortida3.csv
 
 #exercici 4#
-~/practiques$ awk -F, '{views = $8 + 0;
-likes = $9 + 0;
-dislikes = $10 + 0;
-while IFS = ',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count thumbnail_link comments_dissabled rating_dissabled video_error description
-if [ $views ] {Rlikes = $(echo (likes*100/views));} {Rdilikes = $(echo (dislikes*100/views));}
-else {Rlikes = $(echo (0))} {Rdislikes = $(echo (0));}
-print $0 "," Rlikes;
-print $0 "," Rdislikes;}' sortida3.csv>sortida4.csv
+~/practiques$ awk -F, '{
+    views = $8 + 0;
+    likes = $9 + 0;
+    dislikes = $10 + 0;
+
+    if (views > 0) {
+        Rlikes = (likes * 100) / views;
+        Rdislikes = (dislikes * 100) / views;
+    } else {
+        Rlikes = 0;
+        Rdislikes = 0;
+    }
+    
+    print $0 "," Rlikes "," Rdislikes;
+}' sortida3.csv > sortida4.csv
+
 
       
