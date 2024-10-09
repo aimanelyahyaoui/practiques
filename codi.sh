@@ -4,7 +4,7 @@ cd pratiques
 awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 
 #exercici 1#
-~/practiques$ cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv
+~/practiques$ cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv -r
 
 #execici 2#
 ~/practiques$ awk -F ',' '$14 != "True"' sortida.csv > sortida2.csv
@@ -17,3 +17,15 @@ awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
   else if (views<=10000000 && views>1000000) {ranking = "Ecxel·lent";} 
   else {ranking = "Estrella";} 
 print $0 "," ranking;}' sortida2.csv > sortida3.csv
+
+#exercici 4#
+~/practiques$ awk -F, '{views = $8 + 0;
+likes = $9 + 0;
+dislikes = $10 + 0;
+while IFS = ',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count thumbnail_link comments_dissabled rating_dissabled video_error description
+if [ $views ] {Rlikes = $(echo (likes*100/views));} {Rdilikes = $(echo (dislikes*100/views));}
+else {Rlikes = $(echo (0))} {Rdislikes = $(echo (0));}
+print $0 "," Rlikes;
+print $0 "," Rdislikes;}' sortida3.csv>sortida4.csv
+
+      
