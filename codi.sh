@@ -62,20 +62,12 @@ chmod +x Ex4.sh
 
 #exercici 5#
 
-~/practiques$  #!/bin/bash
-
-# Comprovem si l'arxiu de sortida processat "sortida4.csv" existeix
-# Si no existeix, s'informa a l'usuari i es surt de l'script
 if [ ! -f "sortida4.csv" ]; then
     echo "L'arxiu sortida4.csv no existeix."
     exit 1
 fi
 
-# Si es proporciona un paràmetre (comprovem si hi ha 1 argument a l'script)
-# Això permet buscar un vídeo pel seu ID o part del títol
 if [ $# -eq 1 ]; then
-    # Utilitzem grep per buscar el paràmetre passat ($1) dins de l'arxiu "sortida4.csv"
-    # -i fa que la cerca no distingeixi entre majúscules i minúscules
     resultat=$(grep -i "$1" sortida4.csv)
 
     # Comprovem si grep ha trobat algun resultat (si la variable "resultat" no està buida)
