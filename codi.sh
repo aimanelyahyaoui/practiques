@@ -20,7 +20,7 @@ print $0 "," ranking;}' sortida2.csv > sortida3.csv
 
 #exercici 4#
 # Escriure la capçalera amb les noves columnes Rlikes i Rdislikes
-~/practiques$ head -n 1 sortida3.csv | cut -d',' -f1-15git | awk -F, '{print $0",Rlikes,Rdislikes"}' > sortida4.csv
+~/practiques$ head -n 1 sortida3.csv | cut -d',' -f1-15 | awk -F, '{print $0",Rlikes,Rdislikes"}' > sortida4.csv
 
 nano codi.sh
 
