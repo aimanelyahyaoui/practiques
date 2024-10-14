@@ -54,10 +54,15 @@ tail -n +2 sortida3.csv | while IFS= read -r line; do
     fi
 
     # Escriure la línia original amb les noves columnes calculades al fitxer de sortida
-    echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$ratings_disabled,$video_error_or_removed,$ranking,$Rlikes,$Rdislikes" >> sortida4.csv
+    echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$ratings_disabled,$video_error_or_removed,$ranking,$Rlikes,$Rd>
 
 done
 
+chmod +x Ex4.sh
+
+#exercici 5#
+
+~/practiques$  
 
 
 
