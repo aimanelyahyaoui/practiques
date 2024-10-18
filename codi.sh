@@ -1,7 +1,5 @@
 #!/bin/bash
 
-awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
-
 #exercici 1#
 cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv
 
