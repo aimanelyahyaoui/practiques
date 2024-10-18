@@ -1,17 +1,16 @@
 #!/bin/bash
 
-cd pratiques
 awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 
 #exercici 1#
-~/practiques$ cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv
+cut -d ',' --complement -f 12,16 supervivents.csv > sortida.csv
 
 #execici 2#
-~/practiques$ awk -F ',' '$14 != "True"' sortida.csv > sortida2.csv && echo $(($(wc -l < sortida.csv) - $(wc -l < sortida2.csv)))
+awk -F ',' '$14 != "True"' sortida.csv > sortida2.csv && echo $(($(wc -l < sortida.csv) - $(wc -l < sortida2.csv)))
 
 
 #exercici 3#
-~/practiques$ awk -F,  '{ views = $8 + 0; 
+awk -F,  '{ views = $8 + 0; 
     if(views <= 1000000) {ranking = "Bo";}  
     else if (views<=10000000 && views>1000000) {ranking = "Excel·lent";}  
     else {ranking = "Estrella";} print $0 "," ranking;}' 
@@ -19,11 +18,8 @@ awk -F',' '{ if (NF == 16) print $0 }' CAvideos.csv > supervivents.csv
 
 #exercici 4.0#
 # Escriure la capçalera amb les noves columnes Rlikes i Rdislikes
-~/practiques$ head -n 1 sortida3.csv | cut -d',' -f1-15 | awk -F, '{print $0",Rlikes,Rdislikes"}' > sortida4.csv
+head -n 1 sortida3.csv | cut -d',' -f1-15 | awk -F, '{print $0",Rlikes,Rdislikes"}' > sortida4.csv
 
-nano codi.sh
-
-#!/bin/bash
 tail -n +2 sortida3.csv | while IFS= read -r line; do
 
     # Utilitzar cut per extreure les columnes necessàries
@@ -57,12 +53,8 @@ tail -n +2 sortida3.csv | while IFS= read -r line; do
 
 done
 
-chmod +x Ex4.sh  pots compactar aquest codi?
-
-
 #exercici 4#
 # Escriure la capçalera amb les noves columnes Rlikes i Rdislikes
-#!/bin/bash
 
 # Comprovar si el fitxer sortida3.csv existeix
 [ ! -f "sortida3.csv" ] && echo "El fitxer no existeix" && exit 1
@@ -84,7 +76,6 @@ tail -n +2 sortida3.csv | while IFS=, read -r video_id trending_date title chann
     echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$ratings_disabled,$video_error_or_removed,$ranking,$Rlikes,$Rdislikes" >> sortida4.csv
 done
 
-chmod +x Ex4.sh
 
 #exercici 5#
 
