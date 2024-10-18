@@ -1,27 +1,7 @@
 #!/bin/bash
 
 # Comprova si s'ha passat un paràmetre (per a l'exercici 5)
-if [ $# -ne 0 ]; then
-    echo "S'ha proporcionat un paràmetre: $1. S'executarà la cerca de coincidències."
-    resultat=$(grep -i "$1" sortida4.csv)
-
-    if [ -n "$resultat" ]; then
-        echo "$resultat" | while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count comments_disabled ratings_disabled video_error_or_removed ranking rlikes rdislikes; do
-            echo "Title: $title"
-            echo "Publish Time: $publish_time"
-            echo "Views: $views"
-            echo "Likes: $likes"
-            echo "Dislikes: $dislikes"
-            echo "Ranking Views: $ranking"
-            echo "Rlikes (%): $rlikes"
-            echo "Rdislikes (%): $rdislikes"
-            echo "---------------------------"
-        done
-    else
-        echo "No s'han trobat coincidències per al vídeo o títol indicat."
-    fi
-    exit 0
-fi
+if [ $# -eq 0 ]; then
 
 # Exercici 1: Filtrar línies amb 16 camps i eliminar columnes 12 i 16
 echo "Exercici 1: Filtrant línies amb 16 camps i eliminant les columnes description i thumbnail_link."
@@ -81,4 +61,25 @@ if [ ! -f "sortida4.csv" ]; then
     exit 1
 fi
 
+else;
+echo "S'ha proporcionat un paràmetre: $1. S'executarà la cerca de coincidències."
+    resultat=$(grep -i "$1" sortida4.csv)
+
+    if [ -n "$resultat" ]; then
+        echo "$resultat" | while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count comments_disabled ratings_disabled video_error_or_removed ranking rlikes rdislikes; do
+            echo "Title: $title"
+            echo "Publish Time: $publish_time"
+            echo "Views: $views"
+            echo "Likes: $likes"
+            echo "Dislikes: $dislikes"
+            echo "Ranking Views: $ranking"
+            echo "Rlikes (%): $rlikes"
+            echo "Rdislikes (%): $rdislikes"
+            echo "---------------------------"
+        done
+    else
+        echo "No s'han trobat coincidències per al vídeo o títol indicat."
+    fi
+    exit 0
+fi
 echo "S'ha completat l'execució de tots els exercicis."
