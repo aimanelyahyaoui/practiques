@@ -61,7 +61,7 @@ if [ ! -f "sortida4.csv" ]; then
     exit 1
 fi
 
-else;
+else
 echo "S'ha proporcionat un paràmetre: $1. S'executarà la cerca de coincidències."
     resultat=$(grep -i "$1" sortida4.csv)
 
